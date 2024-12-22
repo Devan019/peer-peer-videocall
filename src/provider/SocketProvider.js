@@ -10,7 +10,7 @@ export const useSocket = ()=>{
 
 export const SocketProvider = ({children}) => {
     const socketio = useMemo(()=>{
-       return io('http://localhost:8001')
+       return io('https://omegal-backend-4j09.onrender.com')
     } , [])
   return (
     <SocketContext.Provider value={socketio}>
