@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Home from './pages/Home';
+import { Route, Routes } from 'react-router-dom'
+import { SocketProvider } from './provider/SocketProvider';
+import Room from './pages/Room';
+import PeerProvider from './provider/PeerProvider';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SocketProvider>
+        <PeerProvider>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/room/:roomId' element={<Room />} />
+          </Routes>
+        </PeerProvider>
+      </SocketProvider>
     </div>
   );
 }
